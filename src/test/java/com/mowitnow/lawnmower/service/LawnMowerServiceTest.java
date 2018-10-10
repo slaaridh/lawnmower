@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class LawnMowerServiceTest {
 
-	private LawnMowerService lawnMowerService = new LawnMowerServiceImpl();
+	private LawnMowerService lawnMowerService = LawnMowerServiceImpl.instance;
 
 	@Test
 	public void testExecute() throws IOException {

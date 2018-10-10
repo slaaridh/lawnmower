@@ -11,6 +11,10 @@ public class LawnMowerServiceImpl implements LawnMowerService {
 
 	private final static String SEP = " ";
 
+	public static LawnMowerService instance = new LawnMowerServiceImpl();
+
+	private LawnMowerServiceImpl() { }
+
 	/**
 	 * Returns a list of lawnmowers positions. If input list is empty, no lawnmowers will be created.
 	 *
