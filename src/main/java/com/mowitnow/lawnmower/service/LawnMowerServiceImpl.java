@@ -11,7 +11,7 @@ public class LawnMowerServiceImpl implements LawnMowerService {
 
 	private final static String SEP = " ";
 
-	public static LawnMowerService instance = new LawnMowerServiceImpl();
+	public final static LawnMowerService instance = new LawnMowerServiceImpl();
 
 	private LawnMowerServiceImpl() { }
 
