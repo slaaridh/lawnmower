@@ -2,10 +2,7 @@ package com.mowitnow.lawnmower.service;
 
 import com.mowitnow.lawnmower.domain.LawnMower;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class LawnMowerServiceImpl implements LawnMowerService {
 
@@ -27,10 +24,28 @@ public class LawnMowerServiceImpl implements LawnMowerService {
 	 */
 	@Override
 	public List<String> execute(Queue<String> input) {
+
+		Iterator<LawnMowerConfig> lawnmowers = this.buildConfig(input).iterator();
+		List<String> positions = new ArrayList<>();
+		while (lawnmowers.hasNext()) {
+			final LawnMowerConfig lawnMowerConfig = lawnmowers.next();
+			positions.add(lawnMowerConfig.getLawnMower().execute(lawnMowerConfig.getCommands()));
+		}
+		return positions;
+	}
+
+	/**
+	 * Build the config to be used to create lawnmowers and commands.
+	 *
+	 *
+	 * @param input
+	 * @return
+	 */
+	private List<LawnMowerConfig> buildConfig(Queue<String> input) {
 		if (input == null || input.isEmpty())
 			return Collections.emptyList();
 
-		List<String> list = new ArrayList<>();
+		List<LawnMowerConfig> list = new ArrayList<>();
 		String[] dim = input.poll().split(SEP);
 		int maxX = Integer.valueOf(dim[0]);
 		int maxY = Integer.valueOf(dim[1]);
@@ -43,9 +58,27 @@ public class LawnMowerServiceImpl implements LawnMowerService {
 			int x = Integer.valueOf(pos[0]);
 			int y = Integer.valueOf(pos[1]);
 			char orientation = pos[2].charAt(0);
-			list.add(new LawnMower(x, y, orientation, maxX, maxY).execute(input.poll()));
+			list.add(new LawnMowerConfig(new LawnMower(x, y, orientation, maxX, maxY), input.poll()));
 		}
 
+	}
+
+	private class LawnMowerConfig {
+		LawnMower lawnMower;
+		String commands;
+
+		public LawnMowerConfig(LawnMower lawnMower, String commands) {
+			this.lawnMower = lawnMower;
+			this.commands = commands;
+		}
+
+		public LawnMower getLawnMower() {
+			return lawnMower;
+		}
+
+		public String getCommands() {
+			return commands;
+		}
 	}
 
 }
