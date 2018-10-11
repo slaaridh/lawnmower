@@ -37,7 +37,6 @@ public class LawnMowerServiceImpl implements LawnMowerService {
 	/**
 	 * Build the config to be used to create lawnmowers and commands.
 	 *
-	 *
 	 * @param input
 	 * @return
 	 */
@@ -67,16 +66,16 @@ public class LawnMowerServiceImpl implements LawnMowerService {
 		LawnMower lawnMower;
 		String commands;
 
-		public LawnMowerConfig(LawnMower lawnMower, String commands) {
+		LawnMowerConfig(LawnMower lawnMower, String commands) {
 			this.lawnMower = lawnMower;
 			this.commands = commands;
 		}
 
-		public LawnMower getLawnMower() {
+		LawnMower getLawnMower() {
 			return lawnMower;
 		}
 
-		public String getCommands() {
+		String getCommands() {
 			return commands;
 		}
 	}
