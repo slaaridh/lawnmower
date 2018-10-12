@@ -59,12 +59,11 @@ public class LawnMowerServiceImpl implements LawnMowerService {
 			char orientation = pos[2].charAt(0);
 			list.add(new LawnMowerConfig(new LawnMower(x, y, orientation, maxX, maxY), input.poll()));
 		}
-
 	}
 
 	private class LawnMowerConfig {
-		LawnMower lawnMower;
-		String commands;
+		private LawnMower lawnMower;
+		private String commands;
 
 		LawnMowerConfig(LawnMower lawnMower, String commands) {
 			this.lawnMower = lawnMower;

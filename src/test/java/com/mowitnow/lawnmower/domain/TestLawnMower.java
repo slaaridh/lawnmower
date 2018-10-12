@@ -33,13 +33,7 @@ public class TestLawnMower {
 	@Test
 	public void test1() {
 		LawnMower lawnMower = new LawnMower(1, 2, 'N', 5, 5);
-		// Execute work
-		lawnMower.execute("GAGAGAGAA");
-
-		Position newPosition = lawnMower.getPosition();
-		assertEquals(newPosition.getX(), 1);
-		assertEquals(newPosition.getY(), 3);
-		assertEquals(lawnMower.getPosition().getOrientation(), Orientation.N);
+		assertEquals("1 3 N", lawnMower.execute("GAGAGAGAA"));
 	}
 
 	/**
@@ -52,18 +46,12 @@ public class TestLawnMower {
 	@Test
 	public void test2() {
 		LawnMower lawnMower = new LawnMower(3, 3, 'E', 5, 5);
-		// Execute work
-		lawnMower.execute("AADAADADDA");
-		Position newPosition = lawnMower.getPosition();
-		assertEquals(5, newPosition.getX());
-		assertEquals(1, newPosition.getY());
-		assertEquals(lawnMower.getPosition().getOrientation(), Orientation.E);
+		assertEquals("5 1 E", lawnMower.execute("AADAADADDA"));
 	}
 
 	@Test
 	public void testEmptyCommands() {
 		LawnMower lawnMower = new LawnMower(3, 3, 'N', 5, 5);
-		// Execute work
 		Assert.assertEquals("3 3 N", lawnMower.execute(""));
 	}
 

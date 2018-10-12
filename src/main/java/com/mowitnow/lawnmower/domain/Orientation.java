@@ -3,11 +3,12 @@ package com.mowitnow.lawnmower.domain;
 enum Orientation {
 
 	//The order of appearance of these enums is important.
-	N("North"), E("Est"), S("South"), W("West");
+	N(0, "North"), E(1, "Est"), S(2, "South"), W(3, "West");
 
+	private int index;
 	private String label;
 
-	Orientation(String label) {
+	Orientation(int index, String label) {
 		this.label = label;
 	}
 
