@@ -1,10 +1,10 @@
 package com.mowitnow.lawnmower.service;
 
 import java.util.List;
-import java.util.Queue;
+import java.util.stream.Stream;
 
 public interface LawnMowerService {
 
-	List<String> execute(Queue<String> input);
+	List<String> execute(Stream<String> input);
 
 }

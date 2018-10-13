@@ -5,8 +5,8 @@ import java.util.Queue;
 
 final public class LawnMower {
 
+	private final Position maxPosition;
 	private Position currentPosition;
-	private Position maxPosition;
 
 	private LawnMower(Position currentPosition, Position maxPosition) {
 		// Check indexes
@@ -34,10 +34,6 @@ final public class LawnMower {
 				return this.currentPosition.getPositionAsString();
 			this.move(command);
 		}
-	}
-
-	public Position getPosition() {
-		return currentPosition;
 	}
 
 	private void move(Command command) {
